@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Klock">
+  <meta name="theme-color" content="#000000">
+  <title>Klock</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+  <main id="stage">
+    <div id="clock" class="clock" aria-live="off"></div>
+    <div id="info" class="info">
+      <div id="date" class="date"></div>
+      <div id="weather" class="weather" hidden></div>
+    </div>
+  </main>
+
+  <button id="gear" class="gear" type="button" aria-label="Settings">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  </button>
+
+  <section id="settings" class="settings" hidden aria-label="Settings">
+    <div class="panel">
+      <header class="panel-head">
+        <h1>Settings</h1>
+        <button id="done" class="done" type="button">Done</button>
+      </header>
+
+      <div class="row">
+        <span class="label">Theme</span>
+        <div class="segmented" data-setting="theme">
+          <button type="button" data-value="dark">Minimal Dark</button>
+          <button type="button" data-value="light">Minimal Light</button>
+          <button type="button" data-value="flip">Flip Clock</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="label">Time format</span>
+        <div class="segmented" data-setting="hour12">
+          <button type="button" data-value="false">24-hour</button>
+          <button type="button" data-value="true">12-hour</button>
+        </div>
+      </div>
+
+      <label class="row">
+        <span class="label">Show seconds</span>
+        <input type="checkbox" class="switch" data-setting="showSeconds">
+      </label>
+
+      <label class="row">
+        <span class="label">Show date</span>
+        <input type="checkbox" class="switch" data-setting="showDate">
+      </label>
+
+      <label class="row">
+        <span class="label">Show weather</span>
+        <input type="checkbox" class="switch" data-setting="showWeather">
+      </label>
+
+      <div id="weather-settings" class="weather-settings">
+        <div class="row">
+          <span class="label">Units</span>
+          <div class="segmented" data-setting="units">
+            <button type="button" data-value="celsius">°C</button>
+            <button type="button" data-value="fahrenheit">°F</button>
+          </div>
+        </div>
+
+        <div class="row row-stack">
+          <span class="label">City</span>
+          <form id="city-form" class="city-form" autocomplete="off">
+            <input id="city-input" type="search" placeholder="Search for a city" autocorrect="off" autocapitalize="words" spellcheck="false">
+            <button type="submit">Search</button>
+          </form>
+          <p id="city-current" class="hint"></p>
+          <ul id="city-results" class="city-results"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="weather.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

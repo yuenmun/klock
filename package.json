@@ -1,0 +1,13 @@
+{
+  "name": "klock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-screen clock web app for an old iPad (iOS 12+)",
+  "scripts": {
+    "check": "es-check es2017 'public/**/*.js'",
+    "build": "npm run check"
+  },
+  "devDependencies": {
+    "es-check": "^9.8.1"
+  }
+}
